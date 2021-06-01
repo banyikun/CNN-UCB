@@ -37,13 +37,13 @@ class CNN(nn.Module):
     def forward(self, x):
         x = self.conv1(x)
         #x = self.m(x)
-        x = F.relu(x)
-        #x = torch.sigmoid(x)
+        #x = F.relu(x)
+        x = torch.sigmoid(x)
         
         x = self.conv2(x)
         #x = self.m(x)
-        #x = torch.sigmoid(x)
-        x = F.relu(x)
+        x = torch.sigmoid(x)
+        #x = F.relu(x)
         
         x = self.conv3(x)
         x = F.max_pool2d(x, 2)
@@ -52,8 +52,8 @@ class CNN(nn.Module):
         x = torch.flatten(x, 1)
         #print(x.shape)
         x = self.fc1(x)
-        x = F.relu(x)
-        #x = torch.sigmoid(x)
+        #x = F.relu(x)
+        x = torch.sigmoid(x)
         x = self.fc2(x)
         return x
     

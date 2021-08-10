@@ -25,12 +25,15 @@ python "method" --dataset "dataset"
 For example,   python cnn_ucb.py --dataset cifar10   ; python neuralUCB.py --dataset mnist
 
 
+## Results are in results.pdf
+
 ## note:
 To run dataset "notmnist", it is needed to download "imagedat.npy" and "labeldata.npy", and place them in the local folder.
 
 
 To run dataset "yelp", it is needed to download " yelp_10000items_2000users_features.npy,  yelp_2000users_10000items.npy.zip, yelp_2000users_10000items_features.npy" and unzip "yelp_2000users_10000items.npy.zip" and place them in the local folder.
 
-
 ## Output: (number of round: regret, regret/number of round, loss)
+
+
 

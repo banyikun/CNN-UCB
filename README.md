@@ -16,6 +16,7 @@ numpy 1.20.1
 
 scipy 1.6.2
 
+pandas 1.2.4
 
 ## Methods:
 

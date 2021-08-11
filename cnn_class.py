@@ -6,9 +6,8 @@ class CNN_2d(nn.Module):
         self.conv1 = nn.Conv2d(in_channels =in_channel, out_channels = 32, kernel_size=3, padding=1)
         self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1)
-        self.fc1 = nn.Linear(hidden, 4096)
-        self.fc2 = nn.Linear(4096, 512)
-        self.fc3 = nn.Linear(512, 1)
+        self.fc1 = nn.Linear(hidden, 512)
+        self.fc2 = nn.Linear(512, 1)
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
@@ -16,9 +15,9 @@ class CNN_2d(nn.Module):
         x = torch.flatten(x, 1) # flatten all dimensions except batch
         #print(x.shape)
         x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        x = self.fc3(x)
+        x = self.fc2(x)
         return x
+    
     
     
 

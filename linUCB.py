@@ -46,7 +46,9 @@ if __name__ == '__main__':
         
     summ = 0
     regrets = []
-    lin = Linearucb(b.dim)
+    lamdba=1
+    nu=0.1
+    lin = Linearucb(b.dim, lamdba, nu)
     for t in range(10000):
         context, rwd = b.step()
         arm_select, c, d, e = lin.select(context)

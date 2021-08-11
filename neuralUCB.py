@@ -99,8 +99,8 @@ if __name__ == '__main__':
     arg_size = 1
     arg_shuffle = 1
     arg_seed = 0
-    arg_nu = 1
-    arg_lambda = 0.0001
+    arg_nu = 0.01
+    arg_lambda = 0.1
     arg_hidden = 100
 
     if args.dataset == "mnist":

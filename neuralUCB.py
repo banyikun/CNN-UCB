@@ -81,16 +81,6 @@ class NeuralUCBDiag:
 
 
 
-
-if torch.cuda.is_available():  
-    dev = "cuda:1" 
-else:  
-    dev = "cpu" 
-device = torch.device(dev)
-
-
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='NeuralUCB')
     parser.add_argument('--dataset', default='mnist', type=str, help='mnist, cifar10, notmnist, yelp')

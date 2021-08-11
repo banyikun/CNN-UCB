@@ -213,9 +213,9 @@ class load_notmnist_2d:
 class load_yelp:
     def __init__(self):
         # Fetch data
-        self.m = np.load("../Yelp/yelp_2000users_10000items.npy")
-        self.U = np.load("../Yelp/yelp_2000users_10000items_features.npy")
-        self.I = np.load("../Yelp/yelp_10000items_2000users_features.npy")
+        self.m = np.load("./yelp_2000users_10000items.npy")
+        self.U = np.load("./yelp_2000users_10000items_features.npy")
+        self.I = np.load("./yelp_10000items_2000users_features.npy")
         self.n_arm = 10
         self.dim = 20
         self.pos_index = []

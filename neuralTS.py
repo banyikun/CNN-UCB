@@ -125,7 +125,9 @@ if __name__ == '__main__':
         
     summ = 0
     regrets = []
-    l = NeuralTS(b.dim, b.n_arm, 100)
+    reg = 1
+    nu = 0.1
+    l = NeuralTS(b.dim, b.n_arm, 100, reg, 1, nu)
     for t in range(10000):
         context, rwd = b.step()
         arm_select = l.select(context)

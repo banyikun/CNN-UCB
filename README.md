@@ -25,7 +25,7 @@ python "method" --dataset "dataset"
 For example,   python cnn_ucb.py --dataset cifar10   ; python neuralUCB.py --dataset mnist
 
 
-## Results are configurations are in results.pdf
+## Results and configurations are in results.pdf
 
 ## note:
 To run dataset "notmnist", it is needed to download "imagedat.npy" and "labeldata.npy", and place them in the local folder.

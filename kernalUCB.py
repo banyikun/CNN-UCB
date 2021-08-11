@@ -73,8 +73,8 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', default='mnist', type=str, help='mnist, cifar10, notmnist, yelp')
     args = parser.parse_args()
     
-    arg_gamma = 0.1
-    arg_eta = 0.1
+    arg_lamdba = 0.1
+    arg_nu = 0.1
        
         
     if args.dataset == "mnist":
@@ -85,7 +85,7 @@ if __name__ == '__main__':
         b = load_yelp()
     elif args.dataset == "notmnist":
         b = load_notmnist()
-    ker = KernelUCB(b.dim, arg_gamma, arg_eta)
+    ker = KernelUCB(b.dim, arg_lamdba, arg_nu)
     regrets = []
     summ = 0
     for t in range(10000):

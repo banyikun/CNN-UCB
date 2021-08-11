@@ -1,6 +1,21 @@
 # CNN-UCB
 
-## Prerequisites: latest pytorch and cuda
+## Prerequisites: 
+
+python 3.8.8
+
+CUDA 11.2
+
+torch 1.9.0
+
+torchvision 0.10.0
+
+sklearn 0.24.1
+
+numpy 1.20.1
+
+scipy 1.6.2
+
 
 ## Methods:
 

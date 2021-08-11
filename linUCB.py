@@ -3,7 +3,7 @@ from load_data import load_cifar10_1d, load_mnist_1d, load_notmnist, load_yelp
 
 class Linearucb:
     # Brute-force Linear TS with full inverse
-    def __init__(self, dim, lamdba=0.001, nu=1, style='ts'):
+    def __init__(self, dim, lamdba=1, nu=0.1, style='ucb'):
         self.dim = dim
         self.U = lamdba * np.eye(dim)
         self.Uinv = 1 / lamdba * np.eye(dim)
@@ -35,13 +35,6 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', default='mnist', type=str, help='mnist, cifar10, notmnist, yelp')
     args = parser.parse_args()
     
-    arg_size = 1
-    arg_shuffle = 1
-    arg_seed = 0
-    arg_nu = 1
-    arg_lambda = 0.0001
-    arg_hidden = 100
-
     if args.dataset == "mnist":
         b = load_mnist_1d()
     elif args.dataset == "cifar10":

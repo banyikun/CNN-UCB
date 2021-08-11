@@ -24,7 +24,7 @@ def get_theta(model):
 
 class NeuralTS:
     """Neural Thompson Sampling Strategy"""
-    def __init__(self,dim, n_arm, m,reg=1,sigma=1,nu=0.15):
+    def __init__(self,dim, n_arm, m,reg=1,sigma=1,nu=0.1):
         self.K = n_arm 
         self.nu=nu
         self.sigma=sigma
@@ -113,13 +113,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='NeuralTS')
     parser.add_argument('--dataset', default='mnist', type=str, help='mnist, cifar10, notmnist, yelp')
     args = parser.parse_args()
-    
-    arg_size = 1
-    arg_shuffle = 1
-    arg_seed = 0
-    arg_nu = 1
-    arg_lambda = 0.01
-    arg_hidden = 100
 
     if args.dataset == "mnist":
         b = load_mnist_1d()

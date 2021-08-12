@@ -26,6 +26,8 @@ class CNN_UCB:
         self.loss = torch.nn.MSELoss()
         self.lr = lr
         self.trounds= trounds
+        self.if_2d = if_2d
+        print(self.lr, if_2d, self.trounds, self.nu, self.lamdba)
 
     def select(self, context):
         mu = self.func(context.to(device))
@@ -59,7 +61,10 @@ class CNN_UCB:
 
 
     def train(self):
-        optimizer = optim.SGD(self.func.parameters(), lr=self.lr, momentum=0.9)
+        if self.if_2d:
+            optimizer = optim.SGD(self.func.parameters(), lr=self.lr, momentum=0.9)
+        else:
+            optimizer = optim.SGD(self.func.parameters(), lr=self.lr)
         length = len(self.reward)
         index = np.arange(length)
         np.random.shuffle(index)
@@ -71,11 +76,10 @@ class CNN_UCB:
             for idx in index:
                 c = self.context_list[idx]
                 r = self.reward[idx]
-                r = torch.tensor([r]).float().to(device)
                 optimizer.zero_grad()
                 output = self.func(c.to(device))
+                r = torch.tensor([r]).float().to(device)
                 loss = self.loss(output, r)
-                #loss = (output - r)**2
                 loss.backward()
                 optimizer.step()
                 batch_loss += loss.item()
@@ -108,21 +112,22 @@ if __name__ == '__main__':
         b = load_cifar10_3d()
         arg_shuffle = 1
         arg_nu = 0.01  
-        arg_lambda = 0.00001
+        arg_lambda = 0.0001
         arg_hidden = 12288
         arg_in_channel = 3
         if_2d = 1
+        trounds = 10000
 
     elif args.dataset == "yelp":
         b = load_yelp()
         arg_kernel_size = 2
-        arg_hidden = 360
+        arg_hidden = 1152
         arg_nu = 1
         arg_lambda = 0.001
         arg_in_channel = 1
         if_2d = 0
         lr = 0.01
-        trounds = 1000
+        trounds = 3000
 
     elif args.dataset == "notmnist":
         b = load_notmnist_2d()

@@ -21,6 +21,7 @@ pandas 1.2.4
 ## Methods:
 
 * cnn_ucb.py  -  Proposed algorithm CNN-UCB
+* cnn-ts.py - Combine CNN with Thompson Sampling [Wang et al. 2021]
 * cnn-epsilon.py - CNN with epsilon-greedy exploration strategy
 * neural-epsilon.py - fully-connected neural network with epsilon-greedy exploration strategy
 * neuralTS.py - Neural thompson sampling  [Zhang et al. 2020]

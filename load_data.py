@@ -80,6 +80,48 @@ class load_cifar10_3d:
         return X_n, rwd    
     
     
+class load_cifar10_3d_2:
+    def __init__(self, is_shuffle=True):
+        # Fetch data
+        batch_size = 1
+        transform = transforms.Compose(
+            [transforms.ToTensor(), transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+        trainset = torchvision.datasets.CIFAR10(root='./data', train=True,
+                                        download=True, transform=transform)
+        trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size,
+                                          shuffle=True, num_workers=2)
+        self.dataiter = iter(trainloader)
+        self.n_arm = 3
+        self.dim = 9216
+
+    def step(self):
+        x, y = self.dataiter.next()
+        d = x.numpy()[0]
+        target = int(y.item())
+        if target < 4:
+            target = 0
+        elif target < 7:
+            target = 1
+        else:
+            target = 2
+        #print(target)
+        #print(data.shape)
+        X_n = []
+        for i in range(3):
+            front = np.zeros((3, 32*i, 32))
+            back = np.zeros((3, 32*(2 - i), 32))
+            new_d = np.concatenate((front,  d, back), axis=1)
+            X_n.append(new_d)
+        X_n = np.array(X_n)    
+        rwd = np.zeros(self.n_arm)
+        #print(target)
+        rwd[target] = 1
+        #print(rwd)
+        #print(X_n.shape)
+        return X_n, rwd        
+    
+    
+    
 class load_mnist_1d:
     def __init__(self):
         # Fetch data

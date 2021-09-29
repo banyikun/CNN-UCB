@@ -32,6 +32,7 @@ pandas 1.2.4
 * packages.py - all the needed packages
 * load_data.py - load the datasets
 * cnn_class.py - the CNN classes
+* process_yelp.ipynb - extract features from Yelp dataset
 
 ## Datasets:
 "mnist", "notmnist", "cifar10", "yelp"

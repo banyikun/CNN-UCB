@@ -1,3 +1,19 @@
+If you use the codes of this repository, please kindly cite following paper:
+
+````
+@article{ban2021convolutional,
+  title={Convolutional Neural Bandit for Visual-aware Recommendation},
+  author={Ban, Yikun and He, Jingrui},
+  journal={arXiv preprint arXiv:2107.07438},
+  year={2021}
+}
+````
+
+
+
+
+
+
 # CNN-UCB
 
 ## Prerequisites: 
